@@ -257,152 +257,140 @@ Doc Struct (JSON):
 
 ```json
 {
-  "function": "initialize_pheromones",
-  "description": [
-    "Initializes pheromone levels for ACO across a fixed number of elements.",
-    "Designed to support cache-aware traversal and scalable runs."
-  ],
-  "Args": [
-    "- length (int): Number of elements to initialize. Must be >= 1."
-  ],
-  "returns": [
-    "- list: Float pheromone levels with length equal to length."
-  ],
-  "reqs": [
-    "os",
-    "random"
-  ],
-  "raises": [
-    "TypeError: length must be an int.",
-    "ValueError: length must be >= 1."
-  ],
-  "examples": [
-    ">>> pher = initialize_pheromones(5)",
-    ">>> len(pher) == 5",
-    "True"
-  ]
-}
-
-{
-  "function": "compute_heuristic",
-  "description": [
-    "Computes heuristic desirability values that bias ACO selection toward promising elements.",
-    "Heuristics should be efficient and cache-friendly for O(log n) amortized selection."
-  ],
-  "Args": [
-    "- data (list): List of integers comprising the dataset."
-  ],
-  "returns": [
-    "- list: Float heuristic values aligned with indices of data."
-  ],
-  "reqs": [
-    "os",
-    "random"
-  ],
-  "raises": [
-    "TypeError: data must be a list of integers.",
-    "ValueError: data must not be empty."
-  ],
-  "examples": [
-    ">>> heur = compute_heuristic([3, 1, 2])",
-    ">>> isinstance(heur, list) and len(heur) == 3",
-    "True"
-  ]
-}
- 
-
-
-{
-  "function": "choose_next_index",
-  "description": [
-    "Selects the next index for an ant based on pheromone and heuristic values over candidates.",
-    "Aims for efficient, cache-aware selection with O(log n) amortized behavior."
-  ],
-  "Args": [
-    "- current_index (int): Current position of the ant.",
-    "- candidates (list): Non-empty list of candidate indices.",
-    "- pheromones (list): Pheromone levels for all indices.",
-    "- heuristic (list): Heuristic values for all indices."
-  ],
-  "returns": [
-    "- int: The chosen next index from candidates."
-  ],
-  "reqs": [
-    "os",
-    "random"
-  ],
-  "raises": [
-    "TypeError: Invalid types for inputs.",
-    "ValueError: candidates must not be empty; pheromones and heuristic must align with indices."
-  ],
-  "examples": [
-    ">>> idx = choose_next_index(0, [1, 2, 3], [0.5, 0.5, 0.5, 0.5], [1.0, 0.8, 0.9, 0.7])",
-    ">>> idx in [1, 2, 3]",
-    "True"
-  ]
-}
-
-{
-  "function": "update_pheromones",
-  "description": [
-    "Applies decay and deposit to update pheromone levels along a path.",
-    "Reinforces good solutions while avoiding stagnation via evaporation."
-  ],
-  "Args": [
-    "- pheromones (list): Mutable list of pheromone levels updated in place.",
-    "- path (list): Sequence of visited indices.",
-    "- decay (float): Evaporation rate in [0.0, 1.0].",
-    "- deposit (float): Non-negative amount added along the path."
-  ],
-  "returns": [
-    "- None: Updates occur in place."
-  ],
-  "reqs": [
-    "os",
-    "random"
-  ],
-  "raises": [
-    "TypeError: Invalid types for pheromones, path, decay, or deposit.",
-    "ValueError: decay must be in [0.0, 1.0]; deposit must be >= 0; path must not be empty."
-  ],
-  "examples": [
-    ">>> ph = [0.1] * 5",
-    ">>> update_pheromones(ph, [0, 2, 4], 0.1, 0.05)",
-    ">>> isinstance(ph, list) and len(ph) == 5",
-    "True"
-  ]
-} 
-
-
-
-
-{
-  "function": "cache_optimized_aco",
-  "description": [
-    "Runs a cache-optimized ACO to produce an optimized ordering of the data.",
-    "Targets O(log n) amortized selection and O(n log n) total runtime; uses os for block-based IO at large scales."
-  ],
-  "Args": [
-    "- data (list): List of integers to optimize.",
-    "- num_ants (int): Number of ants per iteration, >= 1.",
-    "- iterations (int): Number of iterations, >= 1."
-  ],
-  "returns": [
-    "- list: Optimized ordering of data, expected ascending for sorting-style tasks."
-  ],
-  "reqs": [
-    "os",
-    "random"
-  ],
-  "raises": [
-    "TypeError: Invalid types for data, num_ants, or iterations.",
-    "ValueError: data must not be empty; num_ants and iterations must be >= 1."
-  ],
-  "examples": [
-    ">>> result = cache_optimized_aco([3, 5, 1, 8, 9, 2, 4, 7, 6], 100, 1000)",
-    ">>> isinstance(result, list) and result == sorted([3, 5, 1, 8, 9, 2, 4, 7, 6])",
-    "True"
-  ]
+  "initialize_pheromones": {
+    "description": [
+      "Initializes pheromone levels for ACO across a fixed number of elements.",
+      "Designed to support cache-aware traversal and scalable runs."
+    ],
+    "Args": [
+      "- length (int): Number of elements to initialize. Must be >= 1."
+    ],
+    "returns": [
+      "- list: Float pheromone levels with length equal to length."
+    ],
+    "reqs": [
+      "os",
+      "random"
+    ],
+    "raises": [
+      "TypeError: length must be an int.",
+      "ValueError: length must be >= 1."
+    ],
+    "examples": [
+      ">>> pher = initialize_pheromones(5)",
+      ">>> len(pher) == 5",
+      "True"
+    ]
+  },
+  "compute_heuristic": {
+    "description": [
+      "Computes heuristic desirability values that bias ACO selection toward promising elements.",
+      "Heuristics should be efficient and cache-friendly for O(log n) amortized selection."
+    ],
+    "Args": [
+      "- data (list): List of integers comprising the dataset."
+    ],
+    "returns": [
+      "- list: Float heuristic values aligned with indices of data."
+    ],
+    "reqs": [
+      "os",
+      "random"
+    ],
+    "raises": [
+      "TypeError: data must be a list of integers.",
+      "ValueError: data must not be empty."
+    ],
+    "examples": [
+      ">>> heur = compute_heuristic([3, 1, 2])",
+      ">>> isinstance(heur, list) and len(heur) == 3",
+      "True"
+    ]
+  },
+  "choose_next_index": {
+    "description": [
+      "Selects the next index for an ant based on pheromone and heuristic values over candidates.",
+      "Aims for efficient, cache-aware selection with O(log n) amortized behavior."
+    ],
+    "Args": [
+      "- current_index (int): Current position of the ant.",
+      "- candidates (list): Non-empty list of candidate indices.",
+      "- pheromones (list): Pheromone levels for all indices.",
+      "- heuristic (list): Heuristic values for all indices."
+    ],
+    "returns": [
+      "- int: The chosen next index from candidates."
+    ],
+    "reqs": [
+      "os",
+      "random"
+    ],
+    "raises": [
+      "TypeError: Invalid types for inputs.",
+      "ValueError: candidates must not be empty; pheromones and heuristic must align with indices."
+    ],
+    "examples": [
+      ">>> idx = choose_next_index(0, [1, 2, 3], [0.5, 0.5, 0.5, 0.5], [1.0, 0.8, 0.9, 0.7])",
+      ">>> idx in [1, 2, 3]",
+      "True"
+    ]
+  },
+  "update_pheromones": {
+    "description": [
+      "Applies decay and deposit to update pheromone levels along a path.",
+      "Reinforces good solutions while avoiding stagnation via evaporation."
+    ],
+    "Args": [
+      "- pheromones (list): Mutable list of pheromone levels updated in place.",
+      "- path (list): Sequence of visited indices.",
+      "- decay (float): Evaporation rate in [0.0, 1.0].",
+      "- deposit (float): Non-negative amount added along the path."
+    ],
+    "returns": [
+      "- None: Updates occur in place."
+    ],
+    "reqs": [
+      "os",
+      "random"
+    ],
+    "raises": [
+      "TypeError: Invalid types for pheromones, path, decay, or deposit.",
+      "ValueError: decay must be in [0.0, 1.0]; deposit must be >= 0; path must not be empty."
+    ],
+    "examples": [
+      ">>> ph = [0.1] * 5",
+      ">>> update_pheromones(ph, [0, 2, 4], 0.1, 0.05)",
+      ">>> isinstance(ph, list) and len(ph) == 5",
+      "True"
+    ]
+  },
+  "cache_optimized_aco": {
+    "description": [
+      "Runs a cache-optimized ACO to produce an optimized ordering of the data.",
+      "Targets O(log n) amortized selection and O(n log n) total runtime; uses os for block-based IO at large scales."
+    ],
+    "Args": [
+      "- data (list): List of integers to optimize.",
+      "- num_ants (int): Number of ants per iteration, >= 1.",
+      "- iterations (int): Number of iterations, >= 1."
+    ],
+    "returns": [
+      "- list: Optimized ordering of data, expected ascending for sorting-style tasks."
+    ],
+    "reqs": [
+      "os",
+      "random"
+    ],
+    "raises": [
+      "TypeError: Invalid types for data, num_ants, or iterations.",
+      "ValueError: data must not be empty; num_ants and iterations must be >= 1."
+    ],
+    "examples": [
+      ">>> result = cache_optimized_aco([3, 5, 1, 8, 9, 2, 4, 7, 6], 100, 1000)",
+      ">>> isinstance(result, list) and result == sorted([3, 5, 1, 8, 9, 2, 4, 7, 6])",
+      "True"
+    ]
+  }
 }
 ```
 How many constraints: 3
