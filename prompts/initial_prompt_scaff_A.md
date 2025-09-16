@@ -16,7 +16,7 @@ Please edit the `@prompt.md` file according to the following requirements:
   - Memory constraints (e.g., "use O(1) extra space")
 
 ### 3. Sample Input & Output
-- **MUST** include at least one complete example with:
+- **MUST** include one complete example with:
   - Clear input format
   - Expected output format
   - Step-by-step explanation if complex
@@ -36,26 +36,17 @@ Please edit the `@prompt.md` file according to the following requirements:
 ## Task Metadata
 
 ```
-Topic: Algorithmic Paradigms & Patterns
-
-Subtopic: Sqrt Decomposition
-
-Use Case: Develop a production-ready aviation systems implementation using random for General use cases
-
-Task Difficulty: Easy
-
+Topic: Concurrent & Distributed Algorithms
+Subtopic: Compare-and-Swap Operations
+Use Case: Implement a solution for computer vision that leverages requests capabilities in a Network environment
+Complexity Rating: Easy
 Programming Language: Python
-
-L1 Taxonomy >> L2 Taxonomy
-
-Advanced Algorithms >> Approximation Algorithms
+L1 Taxonomy >> L2 Taxonomy: Distributed Systems >> Fault Tolerance
 ```
 
 ## Metadata-Based Requirements
-### Programming Language Specification
-- **MUST** specify the programming language clearly in the prompt
-- Include language-specific syntax and conventions
-- Use appropriate data structures and idioms for the language
+
+- You can use any number (but not too much; like max 20) of constraints if you believe they will break the model, and do not forget that the constraints should be feasible singly and also as the whole, while keeping them challenging.
 
 ### Taxonomy Alignment
 - **L1 Taxonomy**: Broad category (e.g., "Backend Development")
@@ -103,7 +94,6 @@ Advanced Algorithms >> Approximation Algorithms
 - [ ] Complete function signatures
 - [ ] Sample input/output included
 - [ ] Hard constraints specified
-- [ ] Programming language specified
 - [ ] Taxonomy alignment verified
 
 ## Action Items
