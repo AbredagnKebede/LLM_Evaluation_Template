@@ -52,16 +52,6 @@ Advanced Algorithms >> Approximation Algorithms
 ```
 
 ## Metadata-Based Requirements
-
-### Task Difficulty Alignment
-Ensure the prompt matches the specified difficulty level:
-
-- **Easy**: ≤3 constraints OR 1-49 lines of code OR solvable by FANG entry/mid engineer in 1 hour
-- **Medium**: 4-7 constraints OR 50-149 lines of code OR solvable by FANG senior engineer in 1 hour  
-- **Hard**: 8+ constraints OR 150+ lines of code OR solvable by FANG principal engineer in 1 hour
-
-**Current Task**: Easy - Keep constraints minimal and solution straightforward.
-
 ### Programming Language Specification
 - **MUST** specify the programming language clearly in the prompt
 - Include language-specific syntax and conventions
