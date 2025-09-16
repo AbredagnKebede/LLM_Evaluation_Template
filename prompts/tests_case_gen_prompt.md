@@ -33,4 +33,8 @@ class TestImplementationName(unittest.TestCase):
     # Test methods here...
 ```
 And the ideal_code that is at the import of the sample test above, assume it is like a code that is the prefect response for the prompt inside @prompt.md, but when generating the test you only depend on the prompt.md not the ideal_code for now.
+
+Please note:
+- Do not use intensive inline comments as they seems to be LLM generated. Tests must not look like LLM generated.
+
 I have attached @prompt.md file
