@@ -186,7 +186,7 @@ def compute_heuristic(data: list[int]) -> list[float]:
 ```
 
 Notes:
- - Generate the output within plain text block ```
+ - Generate the output within plain text block ```, and it should never seem to be LLM generated and provide brief and to the point justifications of only the violations w.r.t the prompt.
  - @tests.py is generated to import functions from ideal_code.py. But I want you to prepare a temp_tests.py file which have the exact same unit tests as @tests.py but that will be run against the code I will provide below. Make sure the unit tests are exaxtly the same.
  - We aren't allowed to edit temp_code.py. If the function names didn't match with the temp_tests.py, change the function names in the temp_tests.py just for the sake of continuing running the tests and see what failed. But mention this failure in the final outputs in the relevant metrics.
  - The bullet points in the output, they should be only relavent to the title. For example under accurary, just list things concerted with accuracy issues only. 
@@ -204,8 +204,10 @@ Notes:
 | Sentence Structure    | Clarity, readability, complexity.                           |
 | Final Suggested Version | The corrected, ideal sentence or text.                    |
 
+**please note**:
+- The justifications should never seem to be LLM generated, please provide brief and to the point justifications of only the violations w.r.t the prompt and also put them inside the temp_code as a comment.
+
 prompt.md: 
 temp_code.py:
 temp_tests.py: 
-please note:
-- Yhe justifications should never seem to be LLM generated, please provide brief and to the point justifications of only the violations w.r.t the prompt.
+
