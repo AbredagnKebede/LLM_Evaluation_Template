@@ -1,9 +1,8 @@
-# LLM Code Evaluation Framework
-
 ## Task Overview
+
 You will evaluate AI-generated code by running unit tests and analyzing the results against four key metrics. The evaluation process involves:
 
-1. **Test Setup**: Update `@temp_tests.py` to match function names in `@temp_code.py` (generated from `@prompt.md`)
+1. **Test Setup**: Update `@temp_tests.py` to match function names in `@temp_code.py` (generated from `@prompt.md`), but I want you to prepare a temp_tests.py file so it has the exact same unit tests as `@tests.py` but that will be run against the code in `@temp_code.py`. Make sure the unit tests are exaxtly the same.
 2. **Test Execution**: Run the tests and collect failure logs and error details
 3. **Code Analysis**: Evaluate the code against four specific metrics
 4. **Documentation**: Add evaluation comments directly to the code
@@ -14,12 +13,12 @@ You will evaluate AI-generated code by running unit tests and analyzing the resu
 - Read `@temp_tests.py` and `@temp_code.py`
 - Update function names in `@temp_tests.py` to match those in `@temp_code.py`
 - Ensure all imports and function calls are correctly aligned
-- Note any function name mismatches for inclusion in final evaluation
+- Note any function name mismatches for inclusion in final evaluation (any function name mismatches is considered as a failer in immplemetation of the prompt)
 
 ### Step 2: Test Execution
 - Run `@temp_tests.py` to execute all unit tests
 - Collect detailed logs of failing tests
-- Document all errors, exceptions, and test failures
+- Document all errors, exceptions, a missing function (specially the one that is required by the promt), and test failures
 - Analyze the root causes of each failure
 
 ### Step 3: Code Evaluation
@@ -120,7 +119,7 @@ Evaluate the generated code against these four metrics:
 
 ## Expected Output Format
 
-Provide your evaluation in the following structured format:
+Provide your evaluation in the following structured markdown format, so it can be easily copied:
 
 ```
 Accuracy: [Severity Level]
@@ -141,6 +140,9 @@ Other Issues: [Severity Level]
 
 Final Score: [1-5] - [Rating Description]
 ```
+**Please note**: Each of the evaluation sections in the above must satsfy the 2 criterias below:
+1. They must never sound LLM generated.
+2. They should be brief to the point w.r.t `@prompt.md` violations(`Other Issues` can be any). 
 
 **Example Output**:
 ```
@@ -235,17 +237,13 @@ Before finalizing your evaluation, review each justification for:
 - **Sentence Structure**: Clear, readable, appropriately complex sentences
 - **Human-like Nuances**: Natural phrasing that doesn't sound AI-generated
 
-After finalizing your evaluation, do the last check for:
-- **Model Functionality Check**: Verify if the model is broken by assessing whether the response in `@temp_code.py` satisfies all requirements from the original prompt in `@prompt.md` AND passes the unit tests in `@temp_tests.py`
-  - **Broken Model Criteria**: A model is considered broken if its implementation fails to meet any of the requirements specified in the original prompt OR if it fails critical unit tests that demonstrate fundamental functionality issues or prompt's requirement disatisifaction
-  - **Assessment Areas**: 
-    - Check if the generated code addresses all functional requirements from the prompt
-    - Verify that the code follows specified constraints and implements required algorithms/approaches
-    - Analyze test results to identify which tests pass/fail and why
-    - Determine if test failures indicate broken core functionality vs. minor implementation issues
-  - **Documentation**: If the model is broken, clearly document which specific prompt requirements were not satisfied AND which critical tests failed, explaining how these failures impact the overall evaluation
+**⚠️ CRITICAL REQUIREMENTS**:
+- **Natural Language**: Write justifications that sound human-written, not AI-generated
+- **Conciseness**: Be brief and to the point while maintaining completeness
+- **Exact Format**: Provide your evaluation in the markdown structured format so I can easily copy the text.
+- **Code Modification**: Never edit `@temp_code.py` - only add evaluation comments
 
 ### File References
-- **prompt.md**: Contains the original prompt used to generate the code
-- **temp_code.py**: Contains the AI-generated code to be evaluated
-- **temp_tests.py**: Contains unit tests adapted for the generated code 
+- @prompt.md : Contains the original prompt used to generate the code
+- @temp_code.py : Contains the AI-generated code to be evaluated
+- @temp_tests.py : Contains unit tests adapted for the generated code 
