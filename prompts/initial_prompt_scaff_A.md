@@ -36,12 +36,7 @@ Please edit the `@prompt.md` file according to the following requirements:
 ## Task Metadata
 
 ```
-Topic: Concurrent & Distributed Algorithms
-Subtopic: Compare-and-Swap Operations
-Use Case: Implement a solution for computer vision that leverages requests capabilities in a Network environment
-Complexity Rating: Easy
-Programming Language: Python
-L1 Taxonomy >> L2 Taxonomy: Distributed Systems >> Fault Tolerance
+
 ```
 
 ## Metadata-Based Requirements
